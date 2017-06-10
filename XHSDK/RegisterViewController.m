@@ -165,86 +165,43 @@
     baseParam.username = account;
     baseParam.password = password;
     
-    if(_isBind){
-        // 1.绑定注册
-        baseParam.token = [XiaoxiSDK Ins].curUser.token;
-        [[XiaoxiSDK Ins].HttpManager postAPIWithM:@"User" A:@"RegisterAndBind" P:baseParam.mj_keyValues success:^(id json) {
-            // 隐藏进度
-            [XiaoxiSDK hideWaiting];
-            NSNumber *code = [json objectForKey:@"code"];
-            if ([code isEqual:@0]) {
-                //登录成功,回调
-                // 取出token
-                NSDictionary *datadic = [json objectForKey:@"data"];
-                // 新绑定用户信息
-                UserInfo *newInfo = [UserInfo UserInfo:account openid:[XiaoxiSDK Ins].curUser.open_id token:[datadic objectForKey:@"token"] isVisitor:NO];
-                newInfo.password = password;
-                // 登录时间戳
-                NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
-                newInfo.loginTime = (long long int)time;
-                // 清除现在登录帐号的游客账号
-                [[XiaoxiSDK Ins] removeUserInfoWithUsername:[XiaoxiSDK Ins].curUser.username];
-                [[XiaoxiSDK Ins] returnLoginSuccess:newInfo];
-                [self close];
-            }else{
-                // 登录失败
-                [[XiaoxiSDK Ins] returnLoginFailure];
-                NSString *msg = [json objectForKey:@"msg"];
-                [self updateTipWithString:msg];
-            }
-        } failure:^(NSError *error) {
-            // 隐藏进度
-            [XiaoxiSDK hideWaiting];
+    // 注册
+    [[XXRequestIns Ins] POSTWithUrl:UrlRegister param:baseParam.mj_keyValues success:^(id json) {
+        [XiaoxiSDK hideWaiting];
+        NSNumber *code = [json objectForKey:@"code"];
+        if ([code isEqual:@0]) {
+            // 取出data
+            NSDictionary *datadic = [json objectForKey:@"data"];
+            UserInfo *info = [UserInfo mj_objectWithKeyValues:datadic];
+            info.avatar = @"xiaoxisdk_user_icon";
+            info.IsVisitor = NO;
+            info.password = password;
+            // 登录时间戳
+            NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
+            info.loginTime = (long long int)time;
+            // 注册登录成功
+            [[XiaoxiSDK Ins] returnLoginSuccess:info];
+            [self close];
+        }else {
+            NSString *msg = [json objectForKey:@"msg"];
+            [self updateTipWithString:msg];
             // 登录失败
             [[XiaoxiSDK Ins] returnLoginFailure];
-            [self updateTipWithString:ErrorTip];
-        }];
-    }
-    else{
-        // 2.注册
-        [[[XiaoxiSDK Ins]HttpManager] postAPIWithM:@"User" A:@"Register" P:baseParam.mj_keyValues success:^(id json) {
-            [XiaoxiSDK hideWaiting];
-            NSNumber *code = [json objectForKey:@"code"];
-            if ([code isEqual:@0]) {
-                // 取出data
-                NSDictionary *datadic = [json objectForKey:@"data"];
-                UserInfo *info = [UserInfo mj_objectWithKeyValues:datadic];
-                info.avatar = @"xiaoxisdk_user_icon";
-                info.IsVisitor = NO;
-                info.password = password;
-                // 登录时间戳
-                NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
-                info.loginTime = (long long int)time;
-                // 注册登录成功
-                [[XiaoxiSDK Ins] returnLoginSuccess:info];
-                [self close];
-            }else {
-                NSString *msg = [json objectForKey:@"msg"];
-                [self updateTipWithString:msg];
-                // 登录失败
-                [[XiaoxiSDK Ins] returnLoginFailure];
-            }
-        } failure:^(NSError *error) {
-            NSLog(@"%@",error);
-            // 登录失败
-            [[XiaoxiSDK Ins] returnLoginFailure];
-            [self updateTipWithString:ErrorTip];
-        }];
-    }
+        }
+    } failure:^(NSError *error) {
+        // 登录失败
+        [[XiaoxiSDK Ins] returnLoginFailure];
+        [self updateTipWithString:ErrorTip];
+    }];
 }
 
 /**
  * 主线程更新错误提示
  */
 - (void)updateTipWithString: (NSString *)tip {
-    if ([NSThread isMainThread]){
-        _tips.text = tip;
-    }
-    else{
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             _tips.text = tip;
         });
-    }
 }
 
 /**

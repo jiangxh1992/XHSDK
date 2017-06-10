@@ -41,13 +41,6 @@ typedef void (^CallbackBlock)(NSInteger result, UserInfo *info);
 - (UIViewController *)unityVC;
 
 /**
- * 悬浮窗
- */
-- (void)addFloatingButton;
-- (void)floatBtnShow;
-- (void)floatBtnHide;
-
-/**
  * 本地帐户数据的添加删除
  */
 - (void) addSavedUserWithUserInfo: (UserInfo *)userinfo;

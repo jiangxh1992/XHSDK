@@ -36,6 +36,11 @@
 @property (nonatomic, copy) NSString *password;
 
 /**
+ * 是否是游客
+ */
+@property (nonatomic, assign) BOOL isvisitor;
+
+/**
  *  新密码
  */
 //@property (nonatomic, copy) NSString *newPassword;

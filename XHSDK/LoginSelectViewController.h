@@ -4,7 +4,7 @@
 //
 //  Created by Xinhou Jiang on 6/7/16.
 //  Copyright © 2016 Xinhou Jiang. All rights reserved.
-//
+//  登录方式选择页面
 
 #import <UIKit/UIKit.h>
 #import "SDKBaseViewController.h"

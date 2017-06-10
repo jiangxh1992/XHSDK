@@ -44,7 +44,7 @@
 }
 
 /**
- *  发送请求
+ *  发送MAP请求
  */
 - (void)postAPIWithM:(NSString *)m A:(NSString *)a P:(NSDictionary *)p success:(void (^)(id json))success failure:(void(^)(NSError *))flaiure {
     // 组装参数
@@ -65,7 +65,23 @@
     }];
 }
 
-- (void)POST:(NSString *)Apiurl form:(NSString *)param success:(void (^)(id json))success failure:(void (^)(NSError *))flaiure {
+/**
+ * Post with dic
+ */
+- (void)POSTWithUrl:(NSString *)url param:(NSDictionary *)dic success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    NSString *json = [dic mj_JSONString];
+    NSString *param = [NSString stringWithFormat:@"param=%@",json];
+    [self POST:url form:param success:^(id json) {
+        success(json);
+    } failure:^(NSError *error) {
+        failure(error);
+    }];
+}
+
+/**
+ * Post base
+ */
+- (void)POST:(NSString *)Apiurl form:(NSString *)param success:(void (^)(id json))success failure:(void (^)(NSError *))failure {
     // 根据会话对象创建task
     NSURL *URL = [NSURL URLWithString:Apiurl];
     // 创建可变的请求对象
@@ -84,7 +100,7 @@
             success(aesjson);
             NSLog(@"返回数据：%@",aesjson);
         }else {
-            flaiure(error);
+            failure(error);
         }
     }];
     //执行任务
@@ -99,12 +115,12 @@
     // 转成字符串
     NSString *jsonStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     // 2 解密
-    jsonStr = [DES3Util AES128Decrypt:jsonStr];
+    //jsonStr = [DES3Util AES128Decrypt:jsonStr];
     // 去掉末尾的\0\0\0...
-    const char *convert = [jsonStr UTF8String];
-    NSString *jsonTrim = [NSString stringWithCString:convert encoding:NSUTF8StringEncoding];
+    //const char *convert = [jsonStr UTF8String];
+    //NSString *jsonTrim = [NSString stringWithCString:convert encoding:NSUTF8StringEncoding];
     // 3 转json
-    return [NSJSONSerialization JSONObjectWithData:[jsonTrim dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+    return [NSJSONSerialization JSONObjectWithData:[jsonStr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 }
 
 /**

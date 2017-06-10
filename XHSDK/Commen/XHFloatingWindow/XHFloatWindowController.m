@@ -40,8 +40,8 @@
 {
     // 1.floating button
     _button = [XHDraggableButton buttonWithType:UIButtonTypeCustom];
-    [self resetBackgroundImage:@"xh_float_normal" forState:UIControlStateNormal];
-    [self resetBackgroundImage:@"xh_float_selected" forState:UIControlStateSelected];
+    [self resetBackgroundImage:@"default_normal" forState:UIControlStateNormal];
+    [self resetBackgroundImage:@"default_selected" forState:UIControlStateSelected];
     _button.imageView.contentMode = UIViewContentModeScaleAspectFill;
     _button.frame = CGRectMake(0, 0, floatWindowSize, floatWindowSize);
     _button.buttonDelegate = self;
@@ -87,7 +87,9 @@
  * reset window hiden
  */
 - (void)setHideWindow:(BOOL)hide {
-    _window.hidden = hide;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _window.hidden = hide;
+    });
 }
 
 /**

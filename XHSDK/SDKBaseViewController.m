@@ -59,29 +59,17 @@
  *  关闭
  */
 - (void)close {
-    if ([NSThread isMainThread]){
+
+    dispatch_async(dispatch_get_main_queue(), ^{
         // 关闭动画
         [UIView animateWithDuration:0.3 animations:^{
             self.navigationController.view.center = CGPointMake(ScreenW/2, ScreenH + SDKWindowH);
         } completion:^(BOOL finished) {
             [self.navigationController dismissViewControllerAnimated:YES completion:nil];
             [self.navigationController.view removeFromSuperview];
-            [[XiaoxiSDK Ins] floatBtnShow];
+            [XHFloatWindow xh_setHideWindow:NO];
         }];
-        
-    }
-    else{
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            // 关闭动画
-            [UIView animateWithDuration:0.3 animations:^{
-                self.navigationController.view.center = CGPointMake(ScreenW/2, ScreenH + SDKWindowH);
-            } completion:^(BOOL finished) {
-                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-                [self.navigationController.view removeFromSuperview];
-                [[XiaoxiSDK Ins] floatBtnShow];
-            }];
-        });
-    }
+    });
 }
 
 @end

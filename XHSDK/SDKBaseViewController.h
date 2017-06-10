@@ -4,7 +4,7 @@
 //
 //  Created by Xinhou Jiang on 7/1/16.
 //  Copyright © 2016 Xinhou Jiang. All rights reserved.
-//
+//  基本视图控制类
 
 #import <UIKit/UIKit.h>
 

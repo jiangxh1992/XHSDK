@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D216373B1EEC1B01003D9008 /* XHDraggableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D21637341EEC1B01003D9008 /* XHDraggableButton.m */; };
+		D216373C1EEC1B01003D9008 /* XHFloatWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D21637361EEC1B01003D9008 /* XHFloatWindow.m */; };
+		D216373D1EEC1B01003D9008 /* XHFloatWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D21637381EEC1B01003D9008 /* XHFloatWindowController.m */; };
+		D216373E1EEC1B01003D9008 /* XHFloatWindowSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = D216373A1EEC1B01003D9008 /* XHFloatWindowSingleton.m */; };
 		D22560EF1EDC2BEF004802A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D22560EE1EDC2BEF004802A3 /* main.m */; };
 		D22560F21EDC2BEF004802A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D22560F11EDC2BEF004802A3 /* AppDelegate.m */; };
 		D22560F51EDC2BEF004802A3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22560F41EDC2BEF004802A3 /* ViewController.m */; };
@@ -45,13 +49,17 @@
 		D22561A01EDC2F46004802A3 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = D22561921EDC2F46004802A3 /* NSObject+MJKeyValue.m */; };
 		D22561A11EDC2F46004802A3 /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = D22561941EDC2F46004802A3 /* NSObject+MJProperty.m */; };
 		D22561A21EDC2F46004802A3 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D22561961EDC2F46004802A3 /* NSString+MJExtension.m */; };
-		D22561AD1EDC3E1E004802A3 /* XHDraggableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D22561A61EDC3E1E004802A3 /* XHDraggableButton.m */; };
-		D22561AE1EDC3E1E004802A3 /* XHFloatWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D22561A81EDC3E1E004802A3 /* XHFloatWindow.m */; };
-		D22561AF1EDC3E1E004802A3 /* XHFloatWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22561AA1EDC3E1E004802A3 /* XHFloatWindowController.m */; };
-		D22561B01EDC3E1E004802A3 /* XHFloatWindowSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = D22561AC1EDC3E1E004802A3 /* XHFloatWindowSingleton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D21637331EEC1B01003D9008 /* XHDraggableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDraggableButton.h; sourceTree = "<group>"; };
+		D21637341EEC1B01003D9008 /* XHDraggableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDraggableButton.m; sourceTree = "<group>"; };
+		D21637351EEC1B01003D9008 /* XHFloatWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHFloatWindow.h; sourceTree = "<group>"; };
+		D21637361EEC1B01003D9008 /* XHFloatWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHFloatWindow.m; sourceTree = "<group>"; };
+		D21637371EEC1B01003D9008 /* XHFloatWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHFloatWindowController.h; sourceTree = "<group>"; };
+		D21637381EEC1B01003D9008 /* XHFloatWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHFloatWindowController.m; sourceTree = "<group>"; };
+		D21637391EEC1B01003D9008 /* XHFloatWindowSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHFloatWindowSingleton.h; sourceTree = "<group>"; };
+		D216373A1EEC1B01003D9008 /* XHFloatWindowSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHFloatWindowSingleton.m; sourceTree = "<group>"; };
 		D22560EA1EDC2BEF004802A3 /* XHSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22560EE1EDC2BEF004802A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D22560F01EDC2BEF004802A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -129,14 +137,6 @@
 		D22561941EDC2F46004802A3 /* NSObject+MJProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJProperty.m"; sourceTree = "<group>"; };
 		D22561951EDC2F46004802A3 /* NSString+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
 		D22561961EDC2F46004802A3 /* NSString+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MJExtension.m"; sourceTree = "<group>"; };
-		D22561A51EDC3E1E004802A3 /* XHDraggableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDraggableButton.h; sourceTree = "<group>"; };
-		D22561A61EDC3E1E004802A3 /* XHDraggableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDraggableButton.m; sourceTree = "<group>"; };
-		D22561A71EDC3E1E004802A3 /* XHFloatWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHFloatWindow.h; sourceTree = "<group>"; };
-		D22561A81EDC3E1E004802A3 /* XHFloatWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHFloatWindow.m; sourceTree = "<group>"; };
-		D22561A91EDC3E1E004802A3 /* XHFloatWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHFloatWindowController.h; sourceTree = "<group>"; };
-		D22561AA1EDC3E1E004802A3 /* XHFloatWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHFloatWindowController.m; sourceTree = "<group>"; };
-		D22561AB1EDC3E1E004802A3 /* XHFloatWindowSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHFloatWindowSingleton.h; sourceTree = "<group>"; };
-		D22561AC1EDC3E1E004802A3 /* XHFloatWindowSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHFloatWindowSingleton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +150,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D21637321EEC1B01003D9008 /* XHFloatingWindow */ = {
+			isa = PBXGroup;
+			children = (
+				D21637331EEC1B01003D9008 /* XHDraggableButton.h */,
+				D21637341EEC1B01003D9008 /* XHDraggableButton.m */,
+				D21637351EEC1B01003D9008 /* XHFloatWindow.h */,
+				D21637361EEC1B01003D9008 /* XHFloatWindow.m */,
+				D21637371EEC1B01003D9008 /* XHFloatWindowController.h */,
+				D21637381EEC1B01003D9008 /* XHFloatWindowController.m */,
+				D21637391EEC1B01003D9008 /* XHFloatWindowSingleton.h */,
+				D216373A1EEC1B01003D9008 /* XHFloatWindowSingleton.m */,
+			);
+			path = XHFloatingWindow;
+			sourceTree = "<group>";
+		};
 		D22560E11EDC2BEF004802A3 = {
 			isa = PBXGroup;
 			children = (
@@ -198,43 +213,13 @@
 		D22561371EDC2D4E004802A3 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				D22561A31EDC2FD3004802A3 /* Tool */,
 				D22561711EDC2E06004802A3 /* Model */,
+				D2AF4F8B1EEBC7AF00F2AC6D /* View */,
+				D2AF4F8A1EEBC7A500F2AC6D /* Controller */,
+				D22561A31EDC2FD3004802A3 /* Tool */,
 				D22561611EDC2DF3004802A3 /* SDK */,
-				D225613C1EDC2DDA004802A3 /* UI */,
 			);
 			name = Class;
-			sourceTree = "<group>";
-		};
-		D225613C1EDC2DDA004802A3 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				D225613D1EDC2DE8004802A3 /* TitleButton.h */,
-				D225613E1EDC2DE8004802A3 /* TitleButton.m */,
-				D225613F1EDC2DE8004802A3 /* AccountTableViewCell.h */,
-				D22561401EDC2DE8004802A3 /* AccountTableViewCell.m */,
-				D22561411EDC2DE8004802A3 /* SDKWindowNavController.h */,
-				D22561421EDC2DE8004802A3 /* SDKWindowNavController.m */,
-				D22561431EDC2DE8004802A3 /* AccountTableViewController.h */,
-				D22561441EDC2DE8004802A3 /* AccountTableViewController.m */,
-				D22561451EDC2DE8004802A3 /* SDKBaseViewController.h */,
-				D22561461EDC2DE8004802A3 /* SDKBaseViewController.m */,
-				D22561471EDC2DE8004802A3 /* UserCenterViewController.h */,
-				D22561481EDC2DE8004802A3 /* UserCenterViewController.m */,
-				D22561491EDC2DE8004802A3 /* AccountLoginViewController.h */,
-				D225614A1EDC2DE8004802A3 /* AccountLoginViewController.m */,
-				D225614B1EDC2DE8004802A3 /* OpenWebViewController.h */,
-				D225614C1EDC2DE8004802A3 /* OpenWebViewController.m */,
-				D225614D1EDC2DE8004802A3 /* RegisterViewController.h */,
-				D225614E1EDC2DE8004802A3 /* RegisterViewController.m */,
-				D225614F1EDC2DE8004802A3 /* SavedLoginViewController.h */,
-				D22561501EDC2DE8004802A3 /* SavedLoginViewController.m */,
-				D22561511EDC2DE8004802A3 /* LoginSelectViewController.h */,
-				D22561521EDC2DE8004802A3 /* LoginSelectViewController.m */,
-				D22561531EDC2DE8004802A3 /* PhoneLoginViewController.h */,
-				D22561541EDC2DE8004802A3 /* PhoneLoginViewController.m */,
-			);
-			name = UI;
 			sourceTree = "<group>";
 		};
 		D22561611EDC2DF3004802A3 /* SDK */ = {
@@ -262,7 +247,7 @@
 		D22561791EDC2F46004802A3 /* Commen */ = {
 			isa = PBXGroup;
 			children = (
-				D22561A41EDC3E1E004802A3 /* FloatingWindowPlugin */,
+				D21637321EEC1B01003D9008 /* XHFloatingWindow */,
 				D225617A1EDC2F46004802A3 /* DES */,
 				D225617E1EDC2F46004802A3 /* MBProgressHUD */,
 				D22561811EDC2F46004802A3 /* MJExtension */,
@@ -330,19 +315,42 @@
 			name = Tool;
 			sourceTree = "<group>";
 		};
-		D22561A41EDC3E1E004802A3 /* FloatingWindowPlugin */ = {
+		D2AF4F8A1EEBC7A500F2AC6D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D22561A51EDC3E1E004802A3 /* XHDraggableButton.h */,
-				D22561A61EDC3E1E004802A3 /* XHDraggableButton.m */,
-				D22561A71EDC3E1E004802A3 /* XHFloatWindow.h */,
-				D22561A81EDC3E1E004802A3 /* XHFloatWindow.m */,
-				D22561A91EDC3E1E004802A3 /* XHFloatWindowController.h */,
-				D22561AA1EDC3E1E004802A3 /* XHFloatWindowController.m */,
-				D22561AB1EDC3E1E004802A3 /* XHFloatWindowSingleton.h */,
-				D22561AC1EDC3E1E004802A3 /* XHFloatWindowSingleton.m */,
+				D22561411EDC2DE8004802A3 /* SDKWindowNavController.h */,
+				D22561421EDC2DE8004802A3 /* SDKWindowNavController.m */,
+				D22561431EDC2DE8004802A3 /* AccountTableViewController.h */,
+				D22561441EDC2DE8004802A3 /* AccountTableViewController.m */,
+				D22561451EDC2DE8004802A3 /* SDKBaseViewController.h */,
+				D22561461EDC2DE8004802A3 /* SDKBaseViewController.m */,
+				D22561471EDC2DE8004802A3 /* UserCenterViewController.h */,
+				D22561481EDC2DE8004802A3 /* UserCenterViewController.m */,
+				D22561491EDC2DE8004802A3 /* AccountLoginViewController.h */,
+				D225614A1EDC2DE8004802A3 /* AccountLoginViewController.m */,
+				D225614B1EDC2DE8004802A3 /* OpenWebViewController.h */,
+				D225614C1EDC2DE8004802A3 /* OpenWebViewController.m */,
+				D225614D1EDC2DE8004802A3 /* RegisterViewController.h */,
+				D225614E1EDC2DE8004802A3 /* RegisterViewController.m */,
+				D225614F1EDC2DE8004802A3 /* SavedLoginViewController.h */,
+				D22561501EDC2DE8004802A3 /* SavedLoginViewController.m */,
+				D22561511EDC2DE8004802A3 /* LoginSelectViewController.h */,
+				D22561521EDC2DE8004802A3 /* LoginSelectViewController.m */,
+				D22561531EDC2DE8004802A3 /* PhoneLoginViewController.h */,
+				D22561541EDC2DE8004802A3 /* PhoneLoginViewController.m */,
 			);
-			path = FloatingWindowPlugin;
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D2AF4F8B1EEBC7AF00F2AC6D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D225613F1EDC2DE8004802A3 /* AccountTableViewCell.h */,
+				D22561401EDC2DE8004802A3 /* AccountTableViewCell.m */,
+				D225613D1EDC2DE8004802A3 /* TitleButton.h */,
+				D225613E1EDC2DE8004802A3 /* TitleButton.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,7 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D225615E1EDC2DE8004802A3 /* SavedLoginViewController.m in Sources */,
-				D22561AE1EDC3E1E004802A3 /* XHFloatWindow.m in Sources */,
+				D216373C1EEC1B01003D9008 /* XHFloatWindow.m in Sources */,
 				D22561341EDC2CCA004802A3 /* UnityViewController.m in Sources */,
 				D22560F51EDC2BEF004802A3 /* ViewController.m in Sources */,
 				D22561A21EDC2F46004802A3 /* NSString+MJExtension.m in Sources */,
@@ -433,10 +441,10 @@
 				D22561771EDC2E10004802A3 /* UserInfo.m in Sources */,
 				D22561581EDC2DE8004802A3 /* AccountTableViewController.m in Sources */,
 				D22561A11EDC2F46004802A3 /* NSObject+MJProperty.m in Sources */,
-				D22561AD1EDC3E1E004802A3 /* XHDraggableButton.m in Sources */,
+				D216373B1EEC1B01003D9008 /* XHDraggableButton.m in Sources */,
 				D22561601EDC2DE8004802A3 /* PhoneLoginViewController.m in Sources */,
 				D225615F1EDC2DE8004802A3 /* LoginSelectViewController.m in Sources */,
-				D22561B01EDC3E1E004802A3 /* XHFloatWindowSingleton.m in Sources */,
+				D216373E1EEC1B01003D9008 /* XHFloatWindowSingleton.m in Sources */,
 				D225619C1EDC2F46004802A3 /* MJPropertyKey.m in Sources */,
 				D22561551EDC2DE8004802A3 /* TitleButton.m in Sources */,
 				D225619D1EDC2F46004802A3 /* MJPropertyType.m in Sources */,
@@ -448,7 +456,7 @@
 				D22561981EDC2F46004802A3 /* MBProgressHUD.m in Sources */,
 				D22560EF1EDC2BEF004802A3 /* main.m in Sources */,
 				D225616E1EDC2DFE004802A3 /* DES3Util.m in Sources */,
-				D22561AF1EDC3E1E004802A3 /* XHFloatWindowController.m in Sources */,
+				D216373D1EEC1B01003D9008 /* XHFloatWindowController.m in Sources */,
 				D22561971EDC2F46004802A3 /* GTMBase64.m in Sources */,
 				D225619B1EDC2F46004802A3 /* MJProperty.m in Sources */,
 				D225615D1EDC2DE8004802A3 /* RegisterViewController.m in Sources */,
@@ -512,7 +520,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREFIX_HEADER = /Users/xinhoujiang/Desktop/XHSDK/XHSDK/Prefix.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/XHSDK/Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -560,7 +568,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = /Users/xinhoujiang/Desktop/XHSDK/XHSDK/Prefix.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/XHSDK/Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -618,6 +626,7 @@
 				D22561031EDC2BF0004802A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,14 +8,14 @@
 
 #import "XXConst.h"
 
-// AES加解密的key
-//NSString *const AES128Key = @"3b5949e0c26b8776";
-//NSString *const ASE128Iv = @"7a4752a276de9570";
-
 // 接口
 NSString *const ApiUrl = @"http://xiaoxigame.com:10000/api";
 NSString *const UserCenterUrl = @"http://vimeo.com/200346125";
 NSString *const ForgetUrl = @"http://vimeo.com/200346125";
+
+NSString *const UrlLogin = @"http://localhost/login.php";
+NSString *const UrlRegister = @"http://localhost/register.php";
+NSString *const UrlVisitor = @"http://localhost/visitor.php";
 
 // 网络请求失败提示
 NSString *const ErrorTip = @"网络错误";

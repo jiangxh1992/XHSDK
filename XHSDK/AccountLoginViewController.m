@@ -186,88 +186,48 @@
     p.username = account;
     p.password = password;
     
-    if (_isBind) {
-        // 1.绑定并登录
-        p.token = [XiaoxiSDK Ins].curUser.token;
-        [[XiaoxiSDK Ins].HttpManager postAPIWithM:@"User" A:@"Bind" P:p.mj_keyValues success:^(id json) {
-            // 隐藏进度
-            [XiaoxiSDK hideWaiting];
-            NSNumber *code = [json objectForKey:@"code"];
-            if ([code isEqual:@0]) {
-                //登录成功,回调
-                // 取出token
-                NSDictionary *datadic = [json objectForKey:@"data"];
-                // 新绑定用户信息
-                UserInfo *newInfo = [UserInfo UserInfo:account openid:[XiaoxiSDK Ins].curUser.open_id token:[datadic objectForKey:@"token"] isVisitor:NO];
-                // 登录时间戳
-                NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
-                newInfo.loginTime = (long long int)time;
-                [[XiaoxiSDK Ins] returnLoginSuccess:newInfo];
-                
-                // 清除现在登录帐号的游客账号
-                [[XiaoxiSDK Ins] removeUserInfoWithUsername:[XiaoxiSDK Ins].curUser.username];
-            }else{
-                // 登录失败
-                [[XiaoxiSDK Ins] returnLoginFailure];
-                NSString *msg = [json objectForKey:@"msg"];
-                [self updateTipWithString:msg];
-            }
-        } failure:^(NSError *error) {
-            // 隐藏进度
-            [XiaoxiSDK hideWaiting];
+    // 普通登录
+    [[XXRequestIns Ins] POSTWithUrl:UrlLogin param:p.mj_keyValues success:^(id json) {
+        [XiaoxiSDK hideWaiting];
+        NSNumber *code = [json objectForKey:@"code"];
+        if ([code isEqual:@0]) {
+            // 取出data
+            NSDictionary *datadic = [json objectForKey:@"data"];
+            
+            UserInfo *info = [UserInfo mj_objectWithKeyValues:datadic];
+            info.avatar = @"xiaoxisdk_user_icon";
+            info.username = account;
+            info.password = password;
+            info.IsVisitor = NO;
+            // 登录时间戳
+            NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
+            info.loginTime = (long long int)time;
+            //登录成功,回调userinfo
+            [[XiaoxiSDK Ins] returnLoginSuccess:info];
+            [self close];
+        }
+        else {
             // 登录失败
             [[XiaoxiSDK Ins] returnLoginFailure];
-            [self updateTipWithString:ErrorTip];
-        }];
-        
-    }else {
-        // 2.普通登录
-        [[XiaoxiSDK Ins].HttpManager postAPIWithM:@"User" A:@"Login" P:p.mj_keyValues success:^(id json) {
-            // 隐藏进度
-            [XiaoxiSDK hideWaiting];
-            NSNumber *code = [json objectForKey:@"code"];
-            if ([code isEqual:@0]) {
-                // 取出data
-                NSDictionary *datadic = [json objectForKey:@"data"];
-                UserInfo *info = [UserInfo mj_objectWithKeyValues:datadic];
-                info.avatar = @"xiaoxisdk_user_icon";
-                info.username = account;
-                info.password = password;
-                info.IsVisitor = NO;
-                // 登录时间戳
-                NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
-                info.loginTime = (long long int)time;
-                //登录成功,回调userinfo
-                [[XiaoxiSDK Ins] returnLoginSuccess:info];
-                [self close];
-            }else{
-                // 登录失败
-                [[XiaoxiSDK Ins] returnLoginFailure];
-                NSString *msg = [json objectForKey:@"msg"];
-                [self updateTipWithString:msg];
-            }
-        } failure:^(NSError *error) {
-            // 隐藏进度
-            [XiaoxiSDK hideWaiting];
-            // 登录失败
-            [[XiaoxiSDK Ins] returnLoginFailure];
-            [self updateTipWithString:ErrorTip];
-        }];
-    }
+            NSString *msg = [json objectForKey:@"msg"];
+            [self updateTipWithString:msg];
+        }
+    } failure:^(NSError *error) {
+        // 隐藏进度
+        [XiaoxiSDK hideWaiting];
+        // 登录失败
+        [[XiaoxiSDK Ins] returnLoginFailure];
+        [self updateTipWithString:ErrorTip];
+    }];
 }
 
 /**
  * 主线程更新错误提示
  */
 - (void)updateTipWithString: (NSString *)tip {
-    if ([NSThread isMainThread]){
+    dispatch_async(dispatch_get_main_queue(), ^{
         _tips.text = tip;
-    }
-    else{
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            _tips.text = tip;
-        });
-    }
+    });
 }
 
 /**

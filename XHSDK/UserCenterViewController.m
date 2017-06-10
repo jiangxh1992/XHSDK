@@ -26,9 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.layer.cornerRadius = 10;
-    
-    [[XiaoxiSDK Ins] floatBtnHide];
-    
     // 添加UI
     [self addUI];
 }

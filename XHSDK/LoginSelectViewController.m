@@ -132,14 +132,9 @@
  * 主线程更新错误提示
  */
 - (void)updateTipWithString: (NSString *)tip {
-    if ([NSThread isMainThread]){
+    dispatch_async(dispatch_get_main_queue(), ^{
         _tips.text = tip;
-    }
-    else{
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            _tips.text = tip;
-        });
-    }
+    });
 }
 
 /**
@@ -151,7 +146,7 @@
     
     ParamBase *param = [ParamBase param];
     
-    [[XiaoxiSDK Ins].HttpManager postAPIWithM:@"User" A:@"RegisterVisitor" P:param.mj_keyValues success:^(id json) {
+    [[XXRequestIns Ins] POSTWithUrl:UrlVisitor param:param.mj_keyValues success:^(id json) {
         [XiaoxiSDK hideWaiting];
         NSNumber *code = [json objectForKey:@"code"];
         if ([code isEqual:@0]) {

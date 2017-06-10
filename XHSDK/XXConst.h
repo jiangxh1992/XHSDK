@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-// AES加解密的key
-//extern NSString *const AES128Key;
-//extern NSString *const AES128Iv;
-
 // 接口
 extern NSString *const ApiUrl;
 extern NSString *const UserCenterUrl;
 extern NSString *const ForgetUrl;
+
+extern NSString *const UrlLogin;
+extern NSString *const UrlRegister;
+extern NSString *const UrlVisitor;
 
 // 网络请求失败提示
 extern NSString *const ErrorTip;

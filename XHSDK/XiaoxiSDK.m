@@ -95,10 +95,9 @@
     NSMutableArray *arr = [self SavedUsers];
     NSLog(@"%@",arr);
     
-    // 添加悬浮窗
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[XiaoxiSDK Ins] addFloatingButton];
-    });
+    // 显示悬浮窗
+    [XHFloatWindow xh_setHideWindow:NO];
+    
     [XiaoxiSDK showTip:[NSString stringWithFormat:@"%@:Wellcome!",[XiaoxiSDK Ins].curUser.username]];
     
     // 回调
@@ -115,24 +114,6 @@
     if (_logincallback) {
         _logincallback(1,nil);
     }
-}
-
-/**
- * 悬浮窗
- */
-- (void)addFloatingButton {
-    // 创建唯一的一个悬浮按钮
-    [XHFloatWindow xh_addWindowOnTarget:_unityVC onClick:^{
-        [SDK EnterUserCenter:^(NSInteger result, UserInfo *info) {
-            
-        }];
-    }];
-}
-- (void)floatBtnHide {
-    [XHFloatWindow xh_setHideWindow:YES];
-}
-- (void)floatBtnShow {
-    [XHFloatWindow xh_setHideWindow:NO];
 }
 
 /**

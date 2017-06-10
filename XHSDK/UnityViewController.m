@@ -21,13 +21,25 @@
 
 @implementation UnityViewController
 
+- (void)viewDidAppear:(BOOL)animated {
+    [XHFloatWindow xh_addWindowOnTarget:self onClick:^{
+        // 进入用户中心
+        [self user];
+        // 隐藏悬浮按钮
+        [XHFloatWindow xh_setHideWindow:YES];
+    }];
+    [XHFloatWindow xh_setBackgroundImage:@"xh_float_normal" forState:UIControlStateNormal];
+    // 默认隐藏悬浮按钮
+    [XHFloatWindow xh_setHideWindow:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor purpleColor]];
     
     /*****************************************************/
     // 初始化sdk
-    [SDK SDKInitWithAppID:@"46571891337916" unityVC:self];
+    [SDK SDKInitWithAppID:@"123456789" unityVC:self];
     /*****************************************************/
     
     // 登录按钮
@@ -68,6 +80,7 @@
  * 1.登录注销
  */
 - (void)login {
+    
     // 登录接口
     [SDK Login:^(NSInteger result, UserInfo *info) {
         // ... ...
@@ -79,6 +92,8 @@
         if (result == 0) {
             // 注销成功
             [XiaoxiSDK showTip:@"Logout successfully"];
+            // 隐藏悬浮按钮
+            [XHFloatWindow xh_setHideWindow:YES];
         }else {
             // 当前没有用户登录
             [XiaoxiSDK showTip:@"No current account"];

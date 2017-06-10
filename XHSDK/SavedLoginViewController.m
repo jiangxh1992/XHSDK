@@ -219,9 +219,8 @@
     ParamBase *p = [ParamBase param];
     p.username = _curAcc.username;
     p.password = _curAcc.password;
-    
-    [[XXRequestIns Ins] postAPIWithM:@"User" A:@"Login" P:p.mj_keyValues success:^(id json) {
-        // 隐藏进度
+    p.isvisitor = _curAcc.IsVisitor;
+    [[XXRequestIns Ins] POSTWithUrl:UrlLogin param:p.mj_keyValues success:^(id json) {
         [XiaoxiSDK hideWaiting];
         NSNumber *code = [json objectForKey:@"code"];
         if ([code isEqual:@0]) {
@@ -236,7 +235,9 @@
             newInfo.loginTime = (long long int)time;
             [[XiaoxiSDK Ins] returnLoginSuccess:newInfo];
             [self close];
-        }else{
+        }
+        else {
+            // 登录失败
             [[XiaoxiSDK Ins] returnLoginFailure];
             NSString *msg = [json objectForKey:@"msg"];
             [self updateTipWithString:msg];
@@ -244,6 +245,7 @@
     } failure:^(NSError *error) {
         // 隐藏进度
         [XiaoxiSDK hideWaiting];
+        // 登录失败
         [[XiaoxiSDK Ins] returnLoginFailure];
         [self updateTipWithString:ErrorTip];
     }];
@@ -342,7 +344,7 @@
     
     ParamBase *param = [ParamBase param];
     
-    [[XiaoxiSDK Ins].HttpManager postAPIWithM:@"User" A:@"RegisterVisitor" P:param.mj_keyValues success:^(id json) {
+    [[XXRequestIns Ins] POSTWithUrl:UrlVisitor param:param.mj_keyValues success:^(id json) {
         [XiaoxiSDK hideWaiting];
         NSNumber *code = [json objectForKey:@"code"];
         if ([code isEqual:@0]) {
@@ -351,6 +353,7 @@
             UserInfo *info = [UserInfo mj_objectWithKeyValues:datadic];
             info.avatar = @"xiaoxisdk_user_icon";
             info.IsVisitor = YES;
+            info.username = [NSString stringWithFormat:@"No.%@ Visitor", [datadic objectForKey:@"open_id"]];
             // 登录时间戳
             NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
             info.loginTime = (long long int)time;
@@ -366,9 +369,9 @@
     } failure:^(NSError *error) {
         [XiaoxiSDK hideWaiting];
         [[XiaoxiSDK Ins] returnLoginFailure];
-        NSLog(@"请求错误：%@",error);
         [self updateTipWithString:ErrorTip];
     }];
+    
 }
 
 /**

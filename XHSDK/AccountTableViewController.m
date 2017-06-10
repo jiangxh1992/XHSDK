@@ -11,7 +11,7 @@
 #import "UserInfo.h"
 #import "AccountTableViewCell.h"
 
-@interface AccountTableViewController ()<AccountDelegate>
+@interface AccountTableViewController ()
 
 @end
 
