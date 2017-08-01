@@ -44,28 +44,6 @@
 }
 
 /**
- *  发送MAP请求
- */
-- (void)postAPIWithM:(NSString *)m A:(NSString *)a P:(NSDictionary *)p success:(void (^)(id json))success failure:(void(^)(NSError *))flaiure {
-    // 组装参数
-    NSMutableDictionary *map = [[NSMutableDictionary alloc] init];
-    [map setObject:m forKey:@"m"];
-    [map setObject:a forKey:@"a"];
-    [map setObject:p forKey:@"p"];
-    NSString *json = [map mj_JSONString];
-    NSLog(@"参数：%@",json);
-    NSString *aes128 = [DES3Util AES128Encrypt:json];//  加密
-    NSString *pack = [NSString stringWithFormat:@"pack=%@",[self AES128Convert:aes128]];
-    
-    // 请求
-    [self POST:ApiUrl form:pack success:^(id data) {
-        success(data);
-    } failure:^(NSError *error) {
-        flaiure(error);
-    }];
-}
-
-/**
  * Post with dic
  */
 - (void)POSTWithUrl:(NSString *)url param:(NSDictionary *)dic success:(void (^)(id))success failure:(void (^)(NSError *))failure {

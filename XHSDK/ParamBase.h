@@ -41,9 +41,9 @@
 @property (nonatomic, assign) BOOL isvisitor;
 
 /**
- *  新密码
+ * 游客名
  */
-//@property (nonatomic, copy) NSString *newPassword;
+@property (nonatomic, copy) NSString *visitorName;
 
 /**
  * 手机号

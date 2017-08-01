@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 // 接口
-extern NSString *const ApiUrl;
 extern NSString *const UserCenterUrl;
 extern NSString *const ForgetUrl;
 
 extern NSString *const UrlLogin;
+extern NSString *const UrlBind;
 extern NSString *const UrlRegister;
 extern NSString *const UrlVisitor;
 
@@ -38,3 +38,24 @@ extern CGFloat const UIBorderM;
 extern CGFloat const floatSize;
 // 输入框与键盘的最小间距
 extern CGFloat const minDistance;
+
+// 图片资源名
+extern NSString *const XHIMG_LOGO;
+extern NSString *const XHIMG_DOWNARROW;
+extern NSString *const XHIMG_INPUTBG;
+extern NSString *const XHIMG_LEFTARROW;
+extern NSString *const XHIMG_RIGHTARROW;
+extern NSString *const XHIMG_LINE;
+extern NSString *const XHIMG_BACK;
+extern NSString *const XHIMG_CLOSE;
+extern NSString *const XHIMG_CHANNEL_ACCOUNT;
+extern NSString *const XHIMG_CHANNEL_PHONE;
+extern NSString *const XHIMG_CHANNEL_VISITOR;
+extern NSString *const XHIMG_CHANNEL_CHANGE;
+extern NSString *const XHIMG_ICON_DISCUZ;
+extern NSString *const XHIMG_ICON_FORGET;
+extern NSString *const XHIMG_ICON_GIFT;
+extern NSString *const XHIMG_ICON_HIDE;
+extern NSString *const XHIMG_ICON_HOME;
+extern NSString *const XHIMG_ICON_PHONE;
+extern NSString *const XHIMG_ICON_USER;

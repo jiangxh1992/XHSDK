@@ -13,7 +13,6 @@
 		D216373E1EEC1B01003D9008 /* XHFloatWindowSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = D216373A1EEC1B01003D9008 /* XHFloatWindowSingleton.m */; };
 		D22560EF1EDC2BEF004802A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D22560EE1EDC2BEF004802A3 /* main.m */; };
 		D22560F21EDC2BEF004802A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D22560F11EDC2BEF004802A3 /* AppDelegate.m */; };
-		D22560F51EDC2BEF004802A3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22560F41EDC2BEF004802A3 /* ViewController.m */; };
 		D22560F81EDC2BF0004802A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D22560F61EDC2BF0004802A3 /* Main.storyboard */; };
 		D22560FA1EDC2BF0004802A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D22560F91EDC2BF0004802A3 /* Assets.xcassets */; };
 		D22560FD1EDC2BF0004802A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D22560FB1EDC2BF0004802A3 /* LaunchScreen.storyboard */; };
@@ -64,8 +63,6 @@
 		D22560EE1EDC2BEF004802A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D22560F01EDC2BEF004802A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D22560F11EDC2BEF004802A3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D22560F31EDC2BEF004802A3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D22560F41EDC2BEF004802A3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D22560F71EDC2BF0004802A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D22560F91EDC2BF0004802A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D22560FC1EDC2BF0004802A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -190,8 +187,6 @@
 				D22561331EDC2CCA004802A3 /* UnityViewController.m */,
 				D22560F01EDC2BEF004802A3 /* AppDelegate.h */,
 				D22560F11EDC2BEF004802A3 /* AppDelegate.m */,
-				D22560F31EDC2BEF004802A3 /* ViewController.h */,
-				D22560F41EDC2BEF004802A3 /* ViewController.m */,
 				D22560F61EDC2BF0004802A3 /* Main.storyboard */,
 				D22560F91EDC2BF0004802A3 /* Assets.xcassets */,
 				D22560FB1EDC2BF0004802A3 /* LaunchScreen.storyboard */,
@@ -428,7 +423,6 @@
 				D225615E1EDC2DE8004802A3 /* SavedLoginViewController.m in Sources */,
 				D216373C1EEC1B01003D9008 /* XHFloatWindow.m in Sources */,
 				D22561341EDC2CCA004802A3 /* UnityViewController.m in Sources */,
-				D22560F51EDC2BEF004802A3 /* ViewController.m in Sources */,
 				D22561A21EDC2F46004802A3 /* NSString+MJExtension.m in Sources */,
 				D225619E1EDC2F46004802A3 /* NSObject+MJClass.m in Sources */,
 				D22561A01EDC2F46004802A3 /* NSObject+MJKeyValue.m in Sources */,

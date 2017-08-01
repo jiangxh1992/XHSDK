@@ -165,8 +165,18 @@
     baseParam.username = account;
     baseParam.password = password;
     
+    if (_isBind) {
+        baseParam.visitorName = [XiaoxiSDK Ins].curUser.username;
+        
+        _tips.text = @"This function is still not available!";
+        return;
+    }
+    // 是否绑定注册
+    //NSString *regurl = _isBind ? UrlBind : UrlRegister;
+    NSString *regurl = UrlRegister;
+    
     // 注册
-    [[XXRequestIns Ins] POSTWithUrl:UrlRegister param:baseParam.mj_keyValues success:^(id json) {
+    [[XXRequestIns Ins] POSTWithUrl:regurl param:baseParam.mj_keyValues success:^(id json) {
         [XiaoxiSDK hideWaiting];
         NSNumber *code = [json objectForKey:@"code"];
         if ([code isEqual:@0]) {

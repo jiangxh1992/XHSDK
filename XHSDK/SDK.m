@@ -24,6 +24,19 @@
 + (void)SDKInitWithAppID:(NSString *)appid unityVC:(UIViewController *)unityVC{
     NSString *adid = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     [[XiaoxiSDK Ins] initWithAppID:appid deviceid:adid unityVC:unityVC];
+
+    [XHFloatWindow xh_addWindowOnTarget:unityVC onClick:^{
+        // 隐藏悬浮按钮
+        [XHFloatWindow xh_setHideWindow:YES];
+        // 进入用户中心接口
+        [SDK EnterUserCenter:^(NSInteger result, UserInfo *info) {
+            
+        }];
+    }];
+    
+    [XHFloatWindow xh_setBackgroundImage:@"xh_float_normal" forState:UIControlStateNormal];
+    // 默认隐藏悬浮按钮
+    [XHFloatWindow xh_setHideWindow:YES];
 }
 
 /**

@@ -201,75 +201,11 @@
         return;
     }
     
-    // 登录提示
-    [XiaoxiSDK showWaitingWithTip:@"Logining..."];
+    // 登录
     ParamBase *param = [ParamBase param];
     param.phone = account;
     param.code = password;
-    if (_isBind) {
-        // 1.绑定并登录
-        param.token = [XiaoxiSDK Ins].curUser.token;
-        [[XiaoxiSDK Ins].HttpManager postAPIWithM:@"User" A:@"PhoneQuickBind" P:param.mj_keyValues success:^(id json) {
-            // 隐藏进度
-            [XiaoxiSDK hideWaiting];
-            NSNumber *code = [json objectForKey:@"code"];
-            if ([code isEqual:@0]) {
-                //登录成功,回调
-                // 取出token
-                NSDictionary *datadic = [json objectForKey:@"data"];
-                // 新绑定用户信息
-                UserInfo *newInfo = [UserInfo UserInfo:account openid:[XiaoxiSDK Ins].curUser.open_id token:[datadic objectForKey:@"token"] isVisitor:NO];
-                // 登录时间戳
-                NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
-                newInfo.loginTime = (long long int)time;
-                [[XiaoxiSDK Ins] returnLoginSuccess:newInfo];
-                
-                // 清除现在登录帐号的游客账号
-                [[XiaoxiSDK Ins] removeUserInfoWithUsername:[XiaoxiSDK Ins].curUser.username];
-            }else{
-                // 登录失败
-                [[XiaoxiSDK Ins] returnLoginFailure];
-                NSString *msg = [json objectForKey:@"msg"];
-                [self updateTipWithString:msg];
-            }
-        } failure:^(NSError *error) {
-            // 隐藏进度
-            [XiaoxiSDK hideWaiting];
-            // 登录失败
-            [[XiaoxiSDK Ins] returnLoginFailure];
-            [self updateTipWithString:ErrorTip];
-        }];
-        
-    }else {
-        // 2.普通登录
-        [[XiaoxiSDK Ins].HttpManager postAPIWithM:@"User" A:@"PhoneQuickLogin" P:param.mj_keyValues success:^(id json) {
-            [XiaoxiSDK hideWaiting];
-            NSNumber *code = [json objectForKey:@"code"];
-            if ([code intValue] != 0) {
-                NSString *msg = [json objectForKey:@"msg"];
-                _tips.text = msg;
-                return;
-            }
-            // 取出data
-            NSDictionary *datadic = [json objectForKey:@"data"];
-            UserInfo *info = [UserInfo mj_objectWithKeyValues:datadic];
-            info.avatar = @"xiaoxisdk_user_icon";
-            info.IsVisitor = NO;
-            // 登录时间戳
-            NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
-            info.loginTime = (long long int)time;
-            // 登录成功
-            [[XiaoxiSDK Ins] returnLoginSuccess:info];
-            // 关闭登录窗口
-            [self close];
-            
-        } failure:^(NSError *error) {
-            [XiaoxiSDK hideWaiting];
-            [self updateTipWithString:@"Network error"];
-            [[XiaoxiSDK Ins] returnLoginFailure];
-        }];
-        
-    }
+    _tips.text = @"This function is still not available!";
     
 }
 
@@ -281,30 +217,8 @@
         _tips.text = @"Please input phone number";
         return;
     }
-    
-    [XiaoxiSDK showWaitingWithTip:@"Please wait..."];
-    
-    NSMutableDictionary *p = [[NSMutableDictionary alloc]init];
-    [p setObject:_account.text forKey:@"phone"];
-    [[XiaoxiSDK Ins].HttpManager postAPIWithM:@"User" A:@"ReqPhoneQuickLoginCode" P:p success:^(id json) {
-        [XiaoxiSDK hideWaiting];
-        NSNumber *code = [json objectForKey:@"code"];
-        if ([code intValue] != 0) {
-            NSString *msg = [json objectForKey:@"msg"];
-            _tips.text = msg;
-        }
-        // 等待验证吗发送，禁用按钮，倒计时
-        [_verufyBtn setEnabled:NO];
-        
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            _timecount = 60;
-            _countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeDown) userInfo:nil repeats:YES];
-        });
-        
-    } failure:^(NSError *error) {
-        [XiaoxiSDK hideWaiting];
-        _tips.text = @"Network error";
-    }];
+    // 获取验证码
+    _tips.text = @"This function is still not available!";
 }
 
 /**

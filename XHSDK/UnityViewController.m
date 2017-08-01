@@ -14,33 +14,21 @@
 
 @property (nonatomic, strong) UIButton *loginBtn;
 @property (nonatomic, strong) UIButton *logoutBtn;
-@property (nonatomic, strong) UIButton *userCenter;
-@property (nonatomic, strong) UIButton *payBtn;
 
 @end
 
 @implementation UnityViewController
 
 - (void)viewDidAppear:(BOOL)animated {
-    [XHFloatWindow xh_addWindowOnTarget:self onClick:^{
-        // 进入用户中心
-        [self user];
-        // 隐藏悬浮按钮
-        [XHFloatWindow xh_setHideWindow:YES];
-    }];
-    [XHFloatWindow xh_setBackgroundImage:@"xh_float_normal" forState:UIControlStateNormal];
-    // 默认隐藏悬浮按钮
-    [XHFloatWindow xh_setHideWindow:YES];
+    /*****************************************************/
+    // 初始化sdk
+    [SDK SDKInitWithAppID:@"123456789" unityVC:self];
+    /*****************************************************/
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor purpleColor]];
-    
-    /*****************************************************/
-    // 初始化sdk
-    [SDK SDKInitWithAppID:@"123456789" unityVC:self];
-    /*****************************************************/
     
     // 登录按钮
     _loginBtn = [[UIButton alloc]init];
@@ -58,22 +46,12 @@
     [_logoutBtn addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_logoutBtn];
     
-    // 用户中心
-    _userCenter = [[UIButton alloc]init];
-    [_userCenter setTitle:@"User Center" forState:UIControlStateNormal];
-    [_userCenter setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [_userCenter setBackgroundColor:[UIColor whiteColor]];
-    [_userCenter addTarget:self action:@selector(user) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_userCenter];
-    
 }
 
 - (void)viewWillLayoutSubviews {
     
     _loginBtn.frame = CGRectMake(10, 100, 100, 25);
     _logoutBtn.frame = CGRectMake(10, 150, 100, 25);
-    _userCenter.frame = CGRectMake(10, 200, 100, 25);
-    _payBtn.frame = CGRectMake(10, 250, 100, 25);
 }
 
 /**
@@ -98,16 +76,6 @@
             // 当前没有用户登录
             [XiaoxiSDK showTip:@"No current account"];
         }
-    }];
-}
-
-/**
- * 2.用户中心
- */
-- (void)user {
-    // 进入用户中心接口
-    [SDK EnterUserCenter:^(NSInteger result, UserInfo *info) {
-       // ... ...
     }];
 }
 
