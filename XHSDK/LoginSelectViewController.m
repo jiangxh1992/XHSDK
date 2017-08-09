@@ -49,13 +49,13 @@
     // 如果不是根控制器添加返回按钮
     if (!self.isRoot) {
         UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, BtnSizeM, BtnSizeM)];
-        [backBtn setImage:[UIImage imageNamed:@"xiaoxisdk_back"] forState:UIControlStateNormal];
+        [backBtn setImage:[UIImage imageNamed:XHIMG_BACK] forState:UIControlStateNormal];
         [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
         [_bgView addSubview:backBtn];
     }
     
     // 添加logo
-    UIImage *logo = [UIImage imageNamed:@"unisdk_protocol_logo"];
+    UIImage *logo = [UIImage imageNamed:XHIMG_LOGO];
     UIImageView *logoView = [[UIImageView alloc]initWithImage:logo];
     logoView.frame = CGRectMake(0, 0, logoW, logoH);
     logoView.center = CGPointMake(SDKWindowW/2, UIBorderM + logoView.frame.size.height/2);
@@ -65,7 +65,7 @@
     // 如果不是根控制器添加返回按钮
     if (self.navigationController.viewControllers > 0) {
         UIButton *closeBtn = [[UIButton alloc]initWithFrame:CGRectMake(SDKWindowW - BtnSizeM, 0, BtnSizeM, BtnSizeM)];
-        [closeBtn setImage:[UIImage imageNamed:@"xiaoxisdk_close"] forState:UIControlStateNormal];
+        [closeBtn setImage:[UIImage imageNamed:XHIMG_CLOSE] forState:UIControlStateNormal];
         [closeBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
         [_bgView addSubview:closeBtn];
     }
@@ -80,7 +80,7 @@
     
     // 快速游戏按钮
     TitleButton *leftBtn = [[TitleButton alloc]initWithFrame:CGRectMake(0, SDKWindowH/4, SDKWindowW/3, SDKWindowW/3)];
-    [leftBtn setImage:[UIImage imageNamed:@"xiaoxisdk_channel_visitor"] forState:UIControlStateNormal];
+    [leftBtn setImage:[UIImage imageNamed:XHIMG_CHANNEL_VISITOR] forState:UIControlStateNormal];
     [leftBtn setTitle:@"Visitor" forState:UIControlStateNormal];
     leftBtn.titleLabel.font = fontNormal;
     [leftBtn setTitleColor:TextColorNormal forState:UIControlStateNormal];
@@ -89,7 +89,7 @@
     
     // 手机快速登录按钮
     TitleButton *phoneBtn = [[TitleButton alloc]initWithFrame:CGRectMake(SDKWindowW/3, SDKWindowH/4, SDKWindowW/3, SDKWindowW/3)];
-    [phoneBtn setImage:[UIImage imageNamed:@"xiaoxisdk_channel_phone"] forState:UIControlStateNormal];
+    [phoneBtn setImage:[UIImage imageNamed:XHIMG_CHANNEL_PHONE] forState:UIControlStateNormal];
     [phoneBtn setTitle:@"PhoneNumber" forState:UIControlStateNormal];
     phoneBtn.titleLabel.font = fontNormal;
     [phoneBtn setTitleColor:TextColorNormal forState:UIControlStateNormal];
@@ -99,18 +99,11 @@
     // 小西账号登录按钮
     TitleButton *rightBtn = [[TitleButton alloc]initWithFrame:CGRectMake(SDKWindowW/3*2, SDKWindowH/4, SDKWindowW/3, SDKWindowW/3)];
     [rightBtn setTitle:@"Account" forState:UIControlStateNormal];
-    [rightBtn setImage:[UIImage imageNamed:@"xiaoxisdk_channel_account"] forState:UIControlStateNormal];
+    [rightBtn setImage:[UIImage imageNamed:XHIMG_CHANNEL_ACCOUNT] forState:UIControlStateNormal];
     rightBtn.titleLabel.font = fontNormal;
     [rightBtn setTitleColor:TextColorNormal forState:UIControlStateNormal];
     [rightBtn addTarget:self action:@selector(xiaoxiLogin) forControlEvents:UIControlEventTouchUpInside];
     [_bgView addSubview:rightBtn];
-    
-    // 推荐标志
-    UIButton *flag = [[UIButton alloc]initWithFrame:CGRectMake(BtnSize/2+5, 5, BtnSize/2, BtnSize/4)];
-    [flag setBackgroundImage:[UIImage imageNamed:@"xiaoxisdk_channel_hot"] forState:UIControlStateNormal];
-    [flag setTitle:@"Hot" forState:UIControlStateNormal];
-    flag.titleLabel.font = fontSmall;
-    [rightBtn addSubview:flag];
 }
 
 /**
@@ -153,7 +146,7 @@
             // 取出data
             NSDictionary *datadic = [json objectForKey:@"data"];
             UserInfo *info = [UserInfo mj_objectWithKeyValues:datadic];
-            info.avatar = @"xiaoxisdk_user_icon";
+            info.avatar = XHIMG_ICON_USER;
             info.IsVisitor = YES;
             // 登录时间戳
             NSTimeInterval time = [[NSDate date] timeIntervalSince1970];

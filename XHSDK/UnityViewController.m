@@ -13,7 +13,6 @@
 @interface UnityViewController ()
 
 @property (nonatomic, strong) UIButton *loginBtn;
-@property (nonatomic, strong) UIButton *logoutBtn;
 
 @end
 
@@ -37,21 +36,11 @@
     [_loginBtn setBackgroundColor:[UIColor whiteColor]];
     [_loginBtn addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_loginBtn];
-    
-    // 注销按钮
-    _logoutBtn = [[UIButton alloc]init];
-    [_logoutBtn setTitle:@"Logout" forState:UIControlStateNormal];
-    [_logoutBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [_logoutBtn setBackgroundColor:[UIColor whiteColor]];
-    [_logoutBtn addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_logoutBtn];
-    
 }
 
 - (void)viewWillLayoutSubviews {
     
     _loginBtn.frame = CGRectMake(10, 100, 100, 25);
-    _logoutBtn.frame = CGRectMake(10, 150, 100, 25);
 }
 
 /**
@@ -62,20 +51,6 @@
     // 登录接口
     [SDK Login:^(NSInteger result, UserInfo *info) {
         // ... ...
-    }];
-}
-- (void)logout {
-    // 注销接口
-    [SDK logout:^(NSUInteger result) {
-        if (result == 0) {
-            // 注销成功
-            [XiaoxiSDK showTip:@"Logout successfully"];
-            // 隐藏悬浮按钮
-            [XHFloatWindow xh_setHideWindow:YES];
-        }else {
-            // 当前没有用户登录
-            [XiaoxiSDK showTip:@"No current account"];
-        }
     }];
 }
 

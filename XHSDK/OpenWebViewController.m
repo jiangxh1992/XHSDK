@@ -34,8 +34,8 @@
     // 导航栏按钮
     UIButton *preBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 16, 20)];
     UIButton *nextBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 16, 20)];
-    [preBtn setImage:[UIImage imageNamed:@"left"] forState:UIControlStateNormal];
-    [nextBtn setImage:[UIImage imageNamed:@"right"] forState:UIControlStateNormal];
+    [preBtn setImage:[UIImage imageNamed:XHIMG_LEFTARROW] forState:UIControlStateNormal];
+    [nextBtn setImage:[UIImage imageNamed:XHIMG_RIGHTARROW] forState:UIControlStateNormal];
     [preBtn addTarget:self action:@selector(prePage) forControlEvents:UIControlEventTouchUpInside];
     [nextBtn addTarget:self action:@selector(nextPage) forControlEvents:UIControlEventTouchUpInside];
     

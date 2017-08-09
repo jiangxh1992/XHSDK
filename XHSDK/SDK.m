@@ -34,7 +34,7 @@
         }];
     }];
     
-    [XHFloatWindow xh_setBackgroundImage:@"xh_float_normal" forState:UIControlStateNormal];
+    [XHFloatWindow xh_setBackgroundImage:XHIMG_CHANNEL_ACCOUNT forState:UIControlStateNormal];
     // 默认隐藏悬浮按钮
     [XHFloatWindow xh_setHideWindow:YES];
 }
@@ -72,18 +72,6 @@
     }];
     // 回调sdk引用
     [XiaoxiSDK Ins].logincallback = callback;
-}
-
-/**
- * 注销
- */
-+ (void)logout:(void (^)(NSUInteger))callback {
-    if (![XiaoxiSDK Ins].curUser) {
-        callback(-1);
-        return;
-    }
-    [XiaoxiSDK Ins].curUser = nil;
-    callback(0);
 }
 
 /**

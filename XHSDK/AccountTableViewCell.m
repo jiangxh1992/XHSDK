@@ -25,7 +25,7 @@
         // 删除按钮
         _deleteButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, inputH, inputH)];
         _deleteButton.center = CGPointMake(inputW - inputH/2, inputH/2);
-        [_deleteButton setImage:[UIImage imageNamed:@"xiaoxisdk_close"] forState:UIControlStateNormal];
+        [_deleteButton setImage:[UIImage imageNamed:XHIMG_CLOSE] forState:UIControlStateNormal];
         [self.contentView addSubview:_deleteButton];
     }
     return self;

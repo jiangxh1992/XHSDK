@@ -21,11 +21,6 @@
 + (void)Login:(void(^)(NSInteger result, UserInfo *info))callback;
 
 /**
- * 注销
- */
-+ (void)logout:(void(^)(NSUInteger result))callback;
-
-/**
  * 进入用户中心
  */
 + (void)EnterUserCenter:(void(^)(NSInteger result, UserInfo *info))callback;

@@ -82,8 +82,8 @@
     //_account.borderStyle = UITextBorderStyleLine;
     //_account.layer.borderWidth = 0.5;
     //_account.layer.borderColor = [RGBColor(230, 230, 230) CGColor];
-    [_account setBackground:[UIImage imageNamed:@"input"]];
-    UIImageView *accountLView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"xiaoxisdk_user_icon"]];
+    [_account setBackground:[UIImage imageNamed:XHIMG_INPUTBG]];
+    UIImageView *accountLView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:XHIMG_ICON_USER]];
     accountLView.frame = CGRectMake(0, 0, inputH, inputH);
     _account.leftView = accountLView;
     _account.leftViewMode = UITextFieldViewModeAlways;
@@ -99,8 +99,8 @@
     //_password.borderStyle = UITextBorderStyleLine;
     //_password.layer.borderWidth = 0.5;
     //_password.layer.borderColor = [UIColor colorWithRed:230 green:230 blue:230 alpha:1.0].CGColor;
-    [_password setBackground:[UIImage imageNamed:@"input"]];
-    UIImageView *pswLView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"xiaoxisdk_security_icon"]];
+    [_password setBackground:[UIImage imageNamed:XHIMG_INPUTBG]];
+    UIImageView *pswLView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:XHIMG_ICON_FORGET]];
     pswLView.frame = CGRectMake(0, 0, inputH, inputH);
     _password.leftView = pswLView;
     _password.leftViewMode = UITextFieldViewModeAlways;
@@ -133,7 +133,7 @@
     
     // 忘记密码按钮
     UIButton *forgetBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, inputH, inputH)];
-    [forgetBtn setBackgroundImage:[UIImage imageNamed:@"xiaoxisdk_security_icon"] forState:UIControlStateNormal];
+    [forgetBtn setBackgroundImage:[UIImage imageNamed:XHIMG_ICON_FORGET] forState:UIControlStateNormal];
     forgetBtn.center = CGPointMake(forgetBtn.frame.size.width/2 + UIBorderM*4, loginBtn.center.y + loginBtn.frame.size.height + 5);
     // 按钮事件
     [forgetBtn addTarget:self action:@selector(forget) forControlEvents:UIControlEventTouchUpInside];
@@ -150,7 +150,7 @@
     
     // 帐号注册按钮
     UIButton *registerBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, inputH, inputH)];
-    [registerBtn setBackgroundImage:[UIImage imageNamed:@"xiaoxisdk_user_icon"] forState:UIControlStateNormal];
+    [registerBtn setBackgroundImage:[UIImage imageNamed:XHIMG_ICON_USER] forState:UIControlStateNormal];
     registerBtn.center = CGPointMake(SDKWindowW - registerBtn.frame.size.width/2 - UIBorderM*4, loginBtn.center.y + loginBtn.frame.size.height + 5);
     // 按钮事件
     [registerBtn addTarget:self action:@selector(regNewAccount) forControlEvents:UIControlEventTouchUpInside];
@@ -195,7 +195,7 @@
             NSDictionary *datadic = [json objectForKey:@"data"];
             
             UserInfo *info = [UserInfo mj_objectWithKeyValues:datadic];
-            info.avatar = @"xiaoxisdk_user_icon";
+            info.avatar = XHIMG_ICON_USER;
             info.username = account;
             info.password = password;
             info.IsVisitor = NO;

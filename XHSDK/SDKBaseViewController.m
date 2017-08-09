@@ -28,7 +28,7 @@
 - (void)addBaseUI {
     
     // 添加logo
-    UIImage *logo = [UIImage imageNamed:@"unisdk_protocol_logo"];
+    UIImage *logo = [UIImage imageNamed:XHIMG_LOGO];
     _logoView = [[UIImageView alloc]initWithImage:logo];
     _logoView.frame = CGRectMake(0, 0, logoW, logoH);
     _logoView.center = CGPointMake(SDKWindowW/2, UIBorderM + _logoView.frame.size.height/2);
@@ -37,13 +37,13 @@
     // 如果不是根控制器添加返回按钮
     if (!_isRoot) {
         _backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, BtnSizeM, BtnSizeM)];
-        [_backBtn setImage:[UIImage imageNamed:@"xiaoxisdk_back"] forState:UIControlStateNormal];
+        [_backBtn setImage:[UIImage imageNamed:XHIMG_BACK] forState:UIControlStateNormal];
         [_backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_backBtn];
     }
     // 关闭按钮
     UIButton *closeBtn = [[UIButton alloc]initWithFrame:CGRectMake(SDKWindowW - BtnSizeM, 0, BtnSizeM, BtnSizeM)];
-    [closeBtn setImage:[UIImage imageNamed:@"xiaoxisdk_close"] forState:UIControlStateNormal];
+    [closeBtn setImage:[UIImage imageNamed:XHIMG_CLOSE] forState:UIControlStateNormal];
     [closeBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeBtn];
 }
@@ -65,9 +65,11 @@
         [UIView animateWithDuration:0.3 animations:^{
             self.navigationController.view.center = CGPointMake(ScreenW/2, ScreenH + SDKWindowH);
         } completion:^(BOOL finished) {
-            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-            [self.navigationController.view removeFromSuperview];
-            [XHFloatWindow xh_setHideWindow:NO];
+            if([XiaoxiSDK Ins].curUser) {
+                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                [self.navigationController.view removeFromSuperview];
+                [XHFloatWindow xh_setHideWindow:NO];
+            }
         }];
     });
 }

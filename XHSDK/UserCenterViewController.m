@@ -53,9 +53,9 @@
     int totalloc = 3;
     CGFloat btnViewWH = SDKWindowW * 0.3;
     // 按钮间距
-    CGFloat margin = (self.view.frame.size.width - totalloc * btnViewWH) / (totalloc + 1);
+    CGFloat margin = (SDKWindowW - totalloc * btnViewWH) / (totalloc + 1);
     // 按钮总数为5
-    int count = 5;
+    int count = 6;
     for (int i = 0; i < count; i++)
     {
         // 行号
@@ -91,7 +91,7 @@
 {
     BOOL isvisitor = [XiaoxiSDK Ins].curUser.IsVisitor;
     NSString *title = isvisitor ? @"Visitor Binidng" : @"User Center";
-    NSString *image = isvisitor ? @"xiaoxisdk_channel_visitor" : @"xiaoxisdk_icon_126_home";
+    NSString *image = isvisitor ? XHIMG_CHANNEL_VISITOR : XHIMG_ICON_HOME;
     switch (btn.tag)
     {
         case 0:
@@ -100,20 +100,23 @@
             break;
         case 1:
             [btn setTitle:@"Forum" forState:UIControlStateNormal];
-            [btn setImage:[UIImage imageNamed:@"xiaoxisdk_icon_126_discuz"] forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:XHIMG_ICON_DISCUZ] forState:UIControlStateNormal];
             break;
         case 2:
             [btn setTitle:@"Packages" forState:UIControlStateNormal];
-            [btn setImage:[UIImage imageNamed:@"xiaoxisdk_icon_126_gift"] forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:XHIMG_ICON_GIFT] forState:UIControlStateNormal];
             break;
         case 3:
-            [btn setTitle:@"Logout" forState:UIControlStateNormal];
-            [btn setImage:[UIImage imageNamed:@"xiaoxisdk_icon_126_change"] forState:UIControlStateNormal];
+            [btn setTitle:@"Account" forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:XHIMG_ICON_CHANGE] forState:UIControlStateNormal];
             break;
         case 4:
             [btn setTitle:@"Hide the Ball" forState:UIControlStateNormal];
-            [btn setImage:[UIImage imageNamed:@"xiaoxisdk_icon_126_hide"] forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:XHIMG_ICON_HIDE] forState:UIControlStateNormal];
             break;
+        case 5:
+            [btn setTitle:@"Logout" forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:XHIMG_ICON_LOGOUT] forState:UIControlStateNormal];
     }
 }
 
@@ -140,6 +143,9 @@
         case 4:
             // 隐藏悬浮球
             break;
+        case 5:
+            // 注销
+            [self toLogout];
         default:
             break;
     }
@@ -168,6 +174,25 @@
         [self.navigationController pushViewController:[[LoginSelectViewController alloc]init] animated:NO];
     }
     
+}
+
+/**
+ * 注销账户
+ */
+- (void)toLogout {
+    if (![XiaoxiSDK Ins].curUser) {
+        // 当前无账户
+        [XiaoxiSDK showTip:@"No current account!"];
+    }
+    else {
+        [XiaoxiSDK Ins].curUser = nil;
+        // 注销成功
+        [XiaoxiSDK showTip:@"Logout successfully"];
+        // 隐藏悬浮按钮
+        [XHFloatWindow xh_setHideWindow:YES];
+        // 关闭用户中心
+        [self close];
+    }
 }
 
 /**

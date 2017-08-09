@@ -71,8 +71,8 @@
 //    _account.borderStyle = UITextBorderStyleLine;
 //    _account.layer.borderWidth = 0.5;
 //    _account.layer.borderColor = [RGBColor(230, 230, 230) CGColor];
-    [_account setBackground:[UIImage imageNamed:@"input"]];
-    UIImageView *accountLView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"xiaoxisdk_user_icon"]];
+    [_account setBackground:[UIImage imageNamed:XHIMG_INPUTBG]];
+    UIImageView *accountLView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:XHIMG_ICON_USER]];
     accountLView.frame = CGRectMake(0, 0, inputH, inputH);
     _account.leftView = accountLView;
     _account.leftViewMode = UITextFieldViewModeAlways;
@@ -88,8 +88,8 @@
 //    _password.borderStyle = UITextBorderStyleLine;
 //    _password.layer.borderColor = [RGBColor(230, 230, 230) CGColor];
 //    _password.layer.borderWidth = 0.5;
-    [_password setBackground:[UIImage imageNamed:@"input"]];
-    UIImageView *pswLView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"xiaoxisdk_security_icon"]];
+    [_password setBackground:[UIImage imageNamed:XHIMG_INPUTBG]];
+    UIImageView *pswLView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:XHIMG_ICON_FORGET]];
     pswLView.frame = CGRectMake(0, 0, inputH, inputH);
     _password.leftView = pswLView;
     _password.leftViewMode = UITextFieldViewModeAlways;
@@ -106,8 +106,8 @@
 //    _confirm.borderStyle = UITextBorderStyleLine;
 //    _confirm.layer.borderColor = [RGBColor(230, 230, 230) CGColor];
 //    _confirm.layer.borderWidth = 0.5;
-    [_confirm setBackground:[UIImage imageNamed:@"input"]];
-    UIImageView *conLView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"xiaoxisdk_security_icon"]];
+    [_confirm setBackground:[UIImage imageNamed:XHIMG_INPUTBG]];
+    UIImageView *conLView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:XHIMG_ICON_FORGET]];
     conLView.frame = CGRectMake(0, 0, inputH, inputH);
     _confirm.leftView = conLView;
     _confirm.leftViewMode = UITextFieldViewModeAlways;
@@ -183,7 +183,7 @@
             // 取出data
             NSDictionary *datadic = [json objectForKey:@"data"];
             UserInfo *info = [UserInfo mj_objectWithKeyValues:datadic];
-            info.avatar = @"xiaoxisdk_user_icon";
+            info.avatar = XHIMG_ICON_USER;
             info.IsVisitor = NO;
             info.password = password;
             // 登录时间戳

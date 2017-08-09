@@ -100,7 +100,7 @@
     // 边框
     //_curAccount.layer.borderWidth = 0.5;
     // 显示框背景
-    [_curAccount setBackgroundImage:[UIImage imageNamed:@"input"] forState:UIControlStateNormal];
+    [_curAccount setBackgroundImage:[UIImage imageNamed:XHIMG_INPUTBG] forState:UIControlStateNormal];
     //[_curAccount setBackgroundColor:[UIColor whiteColor]];
     [_curAccount addTarget:self action:@selector(openAccountList) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_curAccount];
@@ -112,7 +112,7 @@
     
     // 下拉菜单弹出按钮
     UIButton *openBtn = [[UIButton alloc]initWithFrame:CGRectMake(inputW - inputH, 0, inputH, inputH)];
-    [openBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
+    [openBtn setImage:[UIImage imageNamed:XHIMG_DOWNARROW] forState:UIControlStateNormal];
     [openBtn addTarget:self action:@selector(openAccountList) forControlEvents:UIControlEventTouchUpInside];
     [_curAccount addSubview:openBtn];
     
@@ -146,12 +146,12 @@
     // 分割线
     CGFloat separatorW =  SDKWindowW - 2*UIBorder;
     UIImageView *separator = [[UIImageView alloc]initWithFrame:CGRectMake(UIBorder, tip2.frame.origin.y + tip2.frame.size.height + 5,separatorW, 0.5)];
-    [separator setImage:[UIImage imageNamed:@"line"]];
+    [separator setImage:[UIImage imageNamed:XHIMG_LINE]];
     [self.view addSubview:separator];
     
     // 快速游戏按钮
     TitleButton *leftBtn = [[TitleButton alloc]initWithFrame:CGRectMake(separator.frame.origin.x, separator.frame.origin.y, separatorW/3, separatorW/3+10)];
-    [leftBtn setImage:[UIImage imageNamed:@"xiaoxisdk_channel_visitor"] forState:UIControlStateNormal];
+    [leftBtn setImage:[UIImage imageNamed:XHIMG_CHANNEL_VISITOR] forState:UIControlStateNormal];
     [leftBtn setTitle:@"Visitor" forState:UIControlStateNormal];
     leftBtn.titleLabel.font = fontNormal;
     [leftBtn setTitleColor:TextColorNormal forState:UIControlStateNormal];
@@ -160,7 +160,7 @@
     
     // 手机快速登录按钮
     TitleButton *phoneBtn = [[TitleButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(leftBtn.frame), leftBtn.frame.origin.y, separatorW/3, separatorW/3+10)];
-    [phoneBtn setImage:[UIImage imageNamed:@"xiaoxisdk_channel_phone"] forState:UIControlStateNormal];
+    [phoneBtn setImage:[UIImage imageNamed:XHIMG_CHANNEL_PHONE] forState:UIControlStateNormal];
     [phoneBtn setTitle:@"PhoneNumber" forState:UIControlStateNormal];
     phoneBtn.titleLabel.font = fontNormal;
     [phoneBtn setTitleColor:TextColorNormal forState:UIControlStateNormal];
@@ -170,7 +170,7 @@
     // 小西账号登录按钮
     TitleButton *rightBtn = [[TitleButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(phoneBtn.frame), leftBtn.frame.origin.y, separatorW/3, separatorW/3+10)];
     [rightBtn setTitle:@"Account" forState:UIControlStateNormal];
-    [rightBtn setImage:[UIImage imageNamed:@"xiaoxisdk_channel_account"] forState:UIControlStateNormal];
+    [rightBtn setImage:[UIImage imageNamed:XHIMG_CHANNEL_ACCOUNT] forState:UIControlStateNormal];
     rightBtn.titleLabel.font = fontNormal;
     [rightBtn setTitleColor:TextColorNormal forState:UIControlStateNormal];
     [rightBtn addTarget:self action:@selector(xiaoxiLogin) forControlEvents:UIControlEventTouchUpInside];
@@ -199,7 +199,7 @@
     _accountList.view.frame = _listFrame;
     
     UIImageView *bgView = [[UIImageView alloc]initWithFrame:_listFrame];
-    [bgView setImage:[UIImage imageNamed:@"input"]];
+    [bgView setImage:[UIImage imageNamed:XHIMG_INPUTBG]];
     [_accountList.tableView setBackgroundView:bgView];
 }
 
@@ -351,7 +351,7 @@
             // 取出data
             NSDictionary *datadic = [json objectForKey:@"data"];
             UserInfo *info = [UserInfo mj_objectWithKeyValues:datadic];
-            info.avatar = @"xiaoxisdk_user_icon";
+            info.avatar = XHIMG_ICON_USER;
             info.IsVisitor = YES;
             info.username = [NSString stringWithFormat:@"No.%@ Visitor", [datadic objectForKey:@"open_id"]];
             // 登录时间戳
